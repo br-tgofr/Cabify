@@ -3,8 +3,10 @@ package Object;
 import Screen.LoginScreen;
 import org.openqa.selenium.WebDriver;
 
+
 public class LoginScreenObject{
     private WebDriver driver;
+
     private LoginScreen loginScreen;
 
     public LoginScreenObject(WebDriver driver) {
@@ -25,10 +27,20 @@ public class LoginScreenObject{
         loginScreen.btnLogin.click();
     }
 
-    public void validateLogin(){
-    }
+//    public void clickBtnNext(){
+//        loginScreen.btnCaptcha.click();
+//    }
 
-
+//    public void setOptionsTravel(){
+//        loginScreen.btnCaptcha.click();
+//        loginScreen.pickUp.click();
+//        loginScreen.dropOff.click();
+//        loginScreen.liteBox.click();
+//        loginScreen.execBox.click();
+//        loginScreen.textCaptcha.click();
+//        loginScreen.textCaptcha.sendKeys("");
+//        loginScreen.btnEstimate.click();
+//    }
 
 
 }
