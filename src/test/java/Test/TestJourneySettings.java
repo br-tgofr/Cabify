@@ -1,21 +1,23 @@
 package Test;
 
 import Base.Driver;
+import PageFactory.JourneySettingsObject;
 import PageFactory.LoginScreenObject;
+import Screen.JourneySettingsScreen;
 import Screen.LoginScreen;
-
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 
-public class TestLogin{
-
+public class TestJourneySettings {
     AndroidDriver driver;
 
     LoginScreen loginScreen;
     LoginScreenObject loginScreenObject;
+    JourneySettingsScreen journeysettingsScreen;
+    JourneySettingsObject journeySettingsObject;
 
     @BeforeEach
     public void before() throws MalformedURLException {
@@ -25,12 +27,6 @@ public class TestLogin{
     }
 
     @Test
-    public void testLogin() {
-        loginScreen = new LoginScreen(driver);
-        loginScreenObject = new LoginScreenObject(driver);
-        loginScreen.loginCabify("user@qabify.com", "1234Abc", "");
-        loginScreenObject.loginValidate();
-        loginScreenObject.settingsValidate();
-        loginScreen.setPickUp();
+    public void ChooseJourneySettings(){
     }
 }

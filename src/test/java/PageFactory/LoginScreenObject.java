@@ -1,46 +1,44 @@
-package Object;
+package PageFactory;
 
-import Screen.LoginScreen;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import Utils.Utils;
 
 
 public class LoginScreenObject{
     private WebDriver driver;
 
-    private LoginScreen loginScreen;
+    @FindBy(id = "captcha_button")
+    WebElement getTextAfterLogin;
+
+    @FindBy(xpath = "estimate_button")
+    WebElement getTextSettings;
 
     public LoginScreenObject(WebDriver driver) {
-        loginScreen = new LoginScreen(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public void setUsername() {
-        loginScreen.userField.click();
-        loginScreen.userField.sendKeys("user@qabify.com");
+    public String loginValidate(){
+        Utils.waitForElementToBeVisible(driver, getTextAfterLogin, 10);
+        if(driver.getPageSource().contains("Remember this code for requesting a Taxi")){
+            System.out.println("Login successful");
+        }else {
+            System.out.println("Login unsuccessful");
+        }
+        return getTextAfterLogin.getText();
     }
 
-    public void setPassword() {
-        loginScreen.passwordField.click();
-        loginScreen.passwordField.sendKeys("1234Abc");
+    public String settingsValidate(){
+        Utils.waitForElementToBeVisible(driver, getTextSettings, 10);
+        if(driver.getPageSource().contains("Selet your origin and destination:")){
+            System.out.println("Settings trip successful");
+        }else {
+            System.out.println("Settings trip unsuccessful");
+        }
+        return getTextSettings.getText();
     }
-
-    public void clickBtnLogin() {
-        loginScreen.btnLogin.click();
-    }
-
-//    public void clickBtnNext(){
-//        loginScreen.btnCaptcha.click();
-//    }
-
-//    public void setOptionsTravel(){
-//        loginScreen.btnCaptcha.click();
-//        loginScreen.pickUp.click();
-//        loginScreen.dropOff.click();
-//        loginScreen.liteBox.click();
-//        loginScreen.execBox.click();
-//        loginScreen.textCaptcha.click();
-//        loginScreen.textCaptcha.sendKeys("");
-//        loginScreen.btnEstimate.click();
-//    }
-
 
 }
