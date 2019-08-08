@@ -24,8 +24,7 @@ public class BaseSetup {
 
     public void initDriver() throws MalformedURLException {
 
-        File diretorioAplicacao = new File("C:/workspace/AutomationTestCabify/src/test/resources/apps/Cabify");
-        File arquivoAplicacao = new File(diretorioAplicacao, "qabify2019.apk");
+        File arquivoAplicacao = new File("src/test/resources/apps/Cabify/qabify2019.apk");
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability(MobileCapabilityType.PLATFORM_NAME,Platform.ANDROID);
         cap.setCapability(MobileCapabilityType.DEVICE_NAME,"emulator-5554");

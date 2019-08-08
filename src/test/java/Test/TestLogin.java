@@ -1,6 +1,7 @@
 package Test;
 
 import Base.Driver;
+import PageFactory.JourneySettingsObject;
 import PageFactory.LoginScreenObject;
 import Screen.LoginScreen;
 
@@ -14,8 +15,8 @@ public class TestLogin{
 
     AndroidDriver driver;
 
-    LoginScreen loginScreen;
     LoginScreenObject loginScreenObject;
+    JourneySettingsObject jsObject;
 
     @BeforeEach
     public void before() throws MalformedURLException {
@@ -26,11 +27,18 @@ public class TestLogin{
 
     @Test
     public void testLogin() {
-        loginScreen = new LoginScreen(driver);
         loginScreenObject = new LoginScreenObject(driver);
-        loginScreen.loginCabify("user@qabify.com", "1234Abc", "");
+        
+        loginScreenObject.loginCabify("user@qabify.com", "1234Abc", "");
         loginScreenObject.loginValidate();
-        loginScreenObject.settingsValidate();
-        loginScreen.setPickUp();
+        String captcha = loginScreenObject.settingsValidate();
+        jsObject = new JourneySettingsObject(driver);
+        jsObject.setPickUp();
+    }
+    
+    @Test
+    public void testJourneySettings() {
+    	testLogin();
+    	
     }
 }

@@ -28,5 +28,9 @@ public class TestJourneySettings {
 
     @Test
     public void ChooseJourneySettings(){
+    	TestLogin login = new TestLogin();
+    	login.testLogin();
+    	
+    	
     }
 }
